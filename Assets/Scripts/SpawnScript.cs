@@ -26,7 +26,7 @@ public class SpawnScript : MonoBehaviour {
 			rigidbody2D.velocity = new Vector2 (forwardSpeed + acceleration, rigidbody2D.velocity.y);
 		}*/
 
-		if (rigidbody2D.velocity.x > 20) {
+		if (GetComponent<Rigidbody2D>().velocity.x > 20) {
 			spawnMin = 0.5f;
 			spawnMax = 1f;
 		}

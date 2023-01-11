@@ -79,18 +79,18 @@ public class PlayerMovement : MonoBehaviour {
 		if (elapsedTime > 0.10) {
 				Debug.Log (elapsedTime);
 					if (longJump) {	
-						rigidbody2D.AddForce (extraJump);
+						GetComponent<Rigidbody2D>().AddForce (extraJump);
 						longJump = false;
 						smooth = 0.75f;
 					}
 				}
 
 		//Caps the character speed to 25
-		if (rigidbody2D.velocity.x > 24.9f) {
-			rigidbody2D.velocity = new Vector2 (25, rigidbody2D.velocity.y);
+		if (GetComponent<Rigidbody2D>().velocity.x > 24.9f) {
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (25, GetComponent<Rigidbody2D>().velocity.y);
 		}
 		else {
-			rigidbody2D.velocity = new Vector2 (forwardSpeed + acceleration, rigidbody2D.velocity.y);
+			GetComponent<Rigidbody2D>().velocity = new Vector2 (forwardSpeed + acceleration, GetComponent<Rigidbody2D>().velocity.y);
 		}
 
 		//Rotating of the block
@@ -100,13 +100,13 @@ public class PlayerMovement : MonoBehaviour {
 		acceleration += Time.deltaTime / 5;
 
 		//Displays speed of the character
-		Debug.Log ("Velocity is:" + rigidbody2D.velocity.x);
+		Debug.Log ("Velocity is:" + GetComponent<Rigidbody2D>().velocity.x);
 	}
 	
 	void FixedUpdate () {
 		if (jump && inAir == false) {
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x , 0);
-			rigidbody2D.AddForce( jumpSpeed );
+			GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x , 0);
+			GetComponent<Rigidbody2D>().AddForce( jumpSpeed );
 			jump = false;
 			inAir = true;
 			elapsedTime = 0;
@@ -114,8 +114,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		if (doubleJump == true && checkDoubleJump == false) {
-			rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x , 0);
-			rigidbody2D.AddForce( jumpSpeed );
+			GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x , 0);
+			GetComponent<Rigidbody2D>().AddForce( jumpSpeed );
 			doubleJump =false;
 			checkDoubleJump = true;
 		}
